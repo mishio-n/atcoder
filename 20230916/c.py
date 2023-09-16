@@ -36,7 +36,7 @@ for i, (l1,l2,l3) in enumerate(zipped):
             if [1] == c["line"]:
                 flg1 = False
         if flg1 == True:
-            counter[l1].append({"line": [1], "index": i})
+            counter[l1].append({"line": [1], "sec": i})
             if len(counter[l1]) == 3:
                 slotNumber = l1
                 break
@@ -47,9 +47,9 @@ for i, (l1,l2,l3) in enumerate(zipped):
                 flg2 = False
         if flg2 == True:
             if flg1 == True and l2 == l1:
-                counter[l1][-1] = {"line": [1,2], "index": i}
+                counter[l1][-1] = {"line": [1,2], "sec": i}
             else:
-                counter[l2].append({"line": [2], "index": i})
+                counter[l2].append({"line": [2], "sec": i})
             if len(counter[l2]) == 3:
                 slotNumber = l2
                 break
@@ -60,16 +60,16 @@ for i, (l1,l2,l3) in enumerate(zipped):
                 flg3 = False
         if flg3 == True:
             if flg1 == True and flg2 == True and l3 == l1 and l3 == l2:
-                counter[l1][-1] = {"line": [1,2,3], "index": i}
+                counter[l1][-1] = {"line": [1,2,3], "sec": i}
             elif flg1 == True and l3 == l1:
-                counter[l1][-1] = {"line": [1,3], "index": i}
+                counter[l1][-1] = {"line": [1,3], "sec": i}
             elif flg2 == True and l3 == l2:
-                counter[l2][-1] = {"line": [2,3], "index": i}
+                counter[l2][-1] = {"line": [2,3], "sec": i}
             else:
-                counter[l3].append({"line": [3], "index": i})
+                counter[l3].append({"line": [3], "sec": i})
 
         if len(counter[l3]) == 3:
             slotNumber = l3
             break
 
-print(counter[str(slotNumber)][-1]["index"])
+print(counter[str(slotNumber)][-1]["sec"])
